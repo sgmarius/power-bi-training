@@ -17,3 +17,19 @@ TODO:
             - Dashboards
         - Packaging
             - Apps
+
+
+TODO:
+- Create 5 Workspaces each having
+    - 2 Dataflows
+    - 2 Semantic models
+    - 3 Reports
+    - 1 Dashboard
+    - 1 App
+
+- Create exercises:
+ - Given a standard PBIX file
+ - Given a Report file
+ - From the shared workspace, connect to a dataflow within your PBIX file
+ - 
+ - 
