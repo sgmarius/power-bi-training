@@ -142,7 +142,6 @@ Similar to Excel formulae.
 ---
 
 ## Fitting
-
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
 
 Dataflows are making data available for the rest of the platform. They reside within workspaces, but can be accessed from outside their hosting workspace.
@@ -154,7 +153,6 @@ Each table is expressed as a M query inside the Dataflow, this covering both the
 ---
 
 ## Fitting
-
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
 
 Data sources are automatically mapped, based on the queries (or tables) featured, and they require credential management.
@@ -166,34 +164,38 @@ What's upstream of a dataflow:
 ---
 
 ## Fitting
-
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows - Exercise: adding a table
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+**Exercise:** adding a table
 
 - Go to your assigned workspace and open the `Customer` dataflow by clicking on its title.
 - In the upper right corner, click on `Edit tables`
 - In the upper left corner, click on `Get data`
-- In the pop-up's search box, search for `PostgreSQL`
-- From the pop-up's search results, click on `PostgreSQL database`
+- In the pop-up's search box, search for `PostgreSQL` and select `PostgreSQL database`
 
 ---
 
 ## Fitting
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+**Intermission:** the PowerQuery screen.
 
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows - Exercise: adding a table
+---
+
+## Fitting
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+**Exercise:** adding a table
 
 Fill in the details as follows:
 - Server: `aws-0-eu-central-1.pooler.supabase.com`
 - Database: `postgres`
-- Username: `To be provided during training session`
-- Password: `To be provided during training session`
+- Username & password: `To be provided during training session`
 - Privacy Level to None
-- Use encrypted connection unchecked
+- Uncheck encrypted connection
 
 ---
 
 ## Fitting
-
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows - Exercise: adding a table
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+**Exercise:** adding a table
 
   - Click `Next` in the lower right corner
   - Notice that how a set of credentials is created for this data source
@@ -203,12 +205,29 @@ Fill in the details as follows:
 ---
 
 ## Fitting
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
 
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows - Exercise: adding a table
+**Exercise:** adding a table to an existing Dataflow
   - Click `Create` in the lower right corner
-  - Notice that name of newly created query
   - Notice the `Applied steps` section
   - Right click on the `public user_typollogy` query and select `Advanced editor`.
   - Notice the `M` code associated with this query and how it translates to the steps featured in the `Applied steps` section.
 
-<!-- Renaming the query; Making it somewhat match something in the Users query-->
+---
+
+## Fitting
+
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows 
+
+**Intermission:** the settings screen.
+
+---
+
+## Fitting
+
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows - Exercise: adding a table to an existing Dataflow
+
+Sensitivity to change:
+Allow time for a remote schema change on the Supabase side -> notice how schema remains the same in dataflows, this mechanism is not present in semantic models.
+Rename an existing column.
+Change data type of an existing column.
