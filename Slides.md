@@ -81,7 +81,7 @@ in
 
 ```
 
-Looks sequential, but somewhat readable.
+Looks sequential, starting with a data source specification and ending with an `in` variable. We'll go more in depth about this syntax in the Dataflows section.
 
 ---
 
@@ -106,7 +106,7 @@ AVERAGEX (
 )
 
 ```
-Similar to Excel formulae.
+Similar to Excel formulae, since it was made accessible via Excel some 15 years ago. We'll go deeper into DAX in the Semantic Model section.
 
 ---
 
@@ -140,8 +140,11 @@ Similar to Excel formulae.
 - One per workspace
 
 ---
+The next sections we'll blend theory with exercises. We'll start with the Dataflow.
 
-## Fitting
+This is a component some of you might be familiar with since it is present within PowerApps as well.
+
+---
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
 
 Dataflows are making data available for the rest of the platform. They reside within workspaces, but can be accessed from outside their hosting workspace.
@@ -152,82 +155,32 @@ Each table is expressed as a M query inside the Dataflow, this covering both the
 
 ---
 
-## Fitting
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
 
-Data sources are automatically mapped, based on the queries (or tables) featured, and they require credential management.
+The same PowerQuery engine is also used by the semantic models when extracting a loading data in their tabular database, hence a lot of the knowledge will carry over.
+
+Dataflows are primarily an accessibility tool, in the sense that they make data available in a single point in an agreed upon format.
+
+The data present can get refreshed programatically, or on a schedule from the setting screen with a frequency of either 8 or 48 times per day.
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+
+Data sources are automatically mapped, based on the queries (or tables) featured, and they require some credential management.
+
+Each dataflow is managed and developed by an Owner.
 
 What's upstream of a dataflow:
 - Can be consumed by Semantic Models. 
 - ![width:40px](./PowerBI-Icons/SVG/Premium.svg) ![width:40px](./PowerBI-Icons/SVG/Premium-Per-User.svg) Other Dataflows can also be based of dataflows.
 
 ---
-
-## Fitting
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-**Exercise:** adding a table
-
-- Go to your assigned workspace and open the `Customer` dataflow by clicking on its title.
-- In the upper right corner, click on `Edit tables`
-- In the upper left corner, click on `Get data`
-- In the pop-up's search box, search for `PostgreSQL` and select `PostgreSQL database`
-
----
-
-## Fitting
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-**Intermission:** the PowerQuery screen.
-
----
-
-## Fitting
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-**Exercise:** adding a table
-
-Fill in the details as follows:
-- Server: `aws-0-eu-central-1.pooler.supabase.com`
-- Database: `postgres`
-- Username & password: `To be provided during training session`
-- Privacy Level to None
-- Uncheck encrypted connection
-
----
-
-## Fitting
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-**Exercise:** adding a table
-
-  - Click `Next` in the lower right corner
-  - Notice that how a set of credentials is created for this data source
-  - Search for `user_typology` and check the `public.user_typology` table.
-  - Notice right the hand side pane displaying a preview of the data.
-
----
-
-## Fitting
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-
-**Exercise:** adding a table to an existing Dataflow
-  - Click `Create` in the lower right corner
-  - Notice the `Applied steps` section
-  - Right click on the `public user_typollogy` query and select `Advanced editor`.
-  - Notice the `M` code associated with this query and how it translates to the steps featured in the `Applied steps` section.
-
----
-
-## Fitting
-
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows 
-
-**Intermission:** the settings screen.
-
----
-
-## Fitting
-
-#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows - Exercise: adding a table to an existing Dataflow
-
-Sensitivity to change:
-Allow time for a remote schema change on the Supabase side -> notice how schema remains the same in dataflows, this mechanism is not present in semantic models.
-Rename an existing column.
-Change data type of an existing column.
+# **Exercises**
+- Data type casting
+- Transformation
+- Joins
+- No scalar types
+- Sensitivity to schema changes
+- Parameteres
+- Functions
