@@ -62,7 +62,7 @@ We will not go into the more recent componentry (Goals, Streaming Dataflows, Sco
 
 ### ![width:40px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
 - Developed only in the `Power BI Service`
-- Uses a module called `PowerQuery` meant to extract and transform data
+- Uses a module called `Power Query` meant to extract and transform data
 - Accessible, yet customizable, through its syntax called `M`
 - Offers a crude data storage solution
 
@@ -72,16 +72,16 @@ We will not go into the more recent componentry (Goals, Streaming Dataflows, Sco
 ### How does `M` syntax look?
 
 ```
-
 let
-  Query = "SELECT * FROM Customers",
-  Source = Sql.Database("server", "database", Query)
+  Source = PostgreSQL.Database("aws-0-eu-central-1.pooler.supabase.com", "postgres"),
+  #"Navigation 1" = Source{[Schema = "POWER_QUERY_EXERCISES", Item = "EXERCISE_TABLE__SCHEMA_CHANGES"]}[Data],
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Navigation 1", {"ID"}, "Attribute", "Value")
 in
-  Source
+  #"Unpivoted other columns"
 
 ```
 
-Looks sequential, starting with a data source specification and ending with an `in` variable. We'll go more in depth about this syntax in the Dataflows section.
+We'll go in depth about this syntax in the Dataflows section.
 
 ---
 
@@ -172,15 +172,28 @@ Each dataflow is managed and developed by an Owner.
 
 What's upstream of a dataflow:
 - Can be consumed by Semantic Models. 
-- ![width:40px](./PowerBI-Icons/SVG/Premium.svg) ![width:40px](./PowerBI-Icons/SVG/Premium-Per-User.svg) Other Dataflows can also be based of dataflows.
+- ![width:40px](./PowerBI-Icons/SVG/Premium.svg) ![width:40px](./PowerBI-Icons/SVG/Premium-Per-User.svg) Dataflows can also be based of other dataflows.
 
 ---
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-# **Exercises**
+##### **Exercises**
 - Data type casting
 - Transformation
 - Joins
-- No scalar types
+- Semistructured data
 - Sensitivity to schema changes
 - Parameteres
 - Functions
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+The component you'll probably spend the most time with:
+- Extracts, transforms and loads data with a Power Query module of its own (third time it's been mentioned...)
+- Models data allowing for a wider variety than Power Query of transformation and behaviours
+- Offers data access control both at a row and object level
+- Enables data analysis through DAX
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
