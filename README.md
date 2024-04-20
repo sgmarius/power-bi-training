@@ -33,3 +33,8 @@ TODO:
  - From the shared workspace, connect to a dataflow within your PBIX file
  - 
  - 
+
+bb34be95-f88f-43c4-977d-11909c8ab276
+
+
+https://linksoft-crm.api.crm4.dynamics.com/api/data/v9.2/incidents?$filter=incidentid eq '4cfda183-e8c3-4f68-9182-289a176f10b3'

@@ -176,14 +176,63 @@ What's upstream of a dataflow:
 
 ---
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
-##### **Exercises**
-- Data type casting
-- Transformation
-- Joins
-- Semistructured data
-- Sensitivity to schema changes
-- Parameteres
-- Functions
+##### **Exercises**: Data type casting
+
+Consider the structure below (also accessible under `Data types/Type casting`):
+
+![alt text](image.png)
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Data type casting
+
+- What are some issue that you can identify in the query result above?
+- How would you address them?
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Transformation
+
+- Open the query under `Data transformation/Delimiter separated values`:
+
+![alt text](image-1.png)
+- Let's debate about increasing row count versus increasing column count.
+- Let's showcase some more basic tranformations.
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Joins
+
+- Cycle through the queries under `Joins/`:
+
+![alt text](image-2.png)
+
+- Let's discuss on when to avoid and when to use merges.
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Semistructured data
+
+- Moving to `Non scalar data types/Non scalar power query types`:
+
+![alt text](image-4.png)
+
+- `Records`, `Lists` and `Tables`
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Parameters
+
+- Check everything under `Parameters/`:
+![alt text](image-5.png)
+- When to use them and impact on the data source seen in PowerQuery.
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Functions
+
+- Check everything under `User defined functions/`:
+
+![alt text](image-6.png)
 
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
