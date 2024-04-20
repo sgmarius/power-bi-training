@@ -246,3 +246,56 @@ The component you'll probably spend the most time with:
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
 
+##### **ETL**
+Like stated 4 times already, it uses Power Query. The module used in this case allows for some control over parallelism in data loading and is not locking features behind Premium/Premium-per-User.
+
+Unlike Dataflows, which load data in the CSV format behind the scenes, in this case the data is loaded into an SQL Server Analysis Services local server running in Tabular mode.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **ETL**
+Each M query that's load enabled in the Power Query module will create and feed data to a table within the SSAS cube.
+
+SSAS is more restrictive when it comes to data structure hence Power Query will not load columns which feature types `Record`, `List`, `Table` or `Error` as there's no equivalent within SSAS.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **ETL**
+We call the extract, transform and load cycle within a semantic model a `data refresh`. This can be triggered manually, or automatically either based off a schedule:
+- Up to 8 times a day for shared capacities
+- ![width:40px](./PowerBI-Icons/SVG/Premium.svg) ![width:40px](./PowerBI-Icons/SVG/Premium-Per-User.svg) Up to 48 times a day
+
+Refreshes can also be triggered by using the Power BI administrative API.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+SQL Server Analysis Services is effectively an OLAP in-memory column store database. When describing modelling, we are talking about:
+- Managing `relationships` between tables
+- Creating query/processing time `calculated tables`
+- Creating query/processing time `calculated columns`
+- Creating `measures`
+- Managing queries
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+
+While `relationships` can be created and modified through GUI tools like Power BI Desktop, Visual Studio or Tabular Editor, `calculated tables/columns` and `measures` are created using a special syntax called `DAX` (data analysis expressions).
+
+At first glance, `DAX` looks very similar to Excel formulae but has a more broad approach when refering to data, replacing range references of cells to tables, columns or measures.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Security**
+
+Row level security (also known in other systems as RBAC) is also described using `DAX`. RLS works by creating Roles, which target tables within the model, filtering them using a `DAX` expression.
+
+The role can be impersonated in tools like Power BI Desktop / Service or DAX Studio and can be tested/developed as such.
+
+---
