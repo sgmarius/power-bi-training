@@ -273,12 +273,62 @@ Refreshes can also be triggered by using the Power BI administrative API.
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
 
 ##### **Data Modelling**
-SQL Server Analysis Services is effectively an OLAP in-memory column store database. When describing modelling, we are talking about:
+SSAS Tabular is a column oriented in-memory database, hence all the nice compression and speed of processing. The data stored cannot be updated, only deleted and rewritten and because of this, most of the modelling is done by creating artifacts based on existing data.
+
+The starting point when it comes to modelling is the `column`, which has some properties of interest.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+The starting point when it comes to modelling is the `column`, which has some properties of interest:
+- Name - self explanatory
+- Data type - can vary between `Text`, `Integer`, `Decimal`, `DateTime` etc
+- Format string - it's a mask tied to the data type. For example we may store a column as Decimal, but choose to only display the first 3 decimals. These work the same as in Excel
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+Columns are then grouped in tables 😳. A table also has some properties worth mentioning:
+- Name
+- Date table annotation - will describe this more in the exercises
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+Should two tables be related, this can be expressed using one or more relationships. A relationship is set between two columns from different tables. They describe how filters emited from certain tables affect the model.
+
+Between two table there can only be one active relationship, but multiple inactive can be created.
+
+Relationships take into account cardinality of columns, aka `one to many`, `one to one` and `many to many`
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+All of the artifacts described thusfar are used within measures, which are refering to columns or tables in order to calculate some sort of statistic at the most basic level, or provide formatting masks at the more advanced level. Much like columns measures have:
+- Name
+- Data Type
+- Formatting string
+- `DAX` expression
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+You'll find in Power BI that the most interactive way of calculation is offered via measures, since they reschuffle existing data at query time.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Data Modelling**
+Generally, when describing modelling we are talking about:
+- Managing column/table aliases and data types
 - Managing `relationships` between tables
-- Creating query/processing time `calculated tables`
-- Creating query/processing time `calculated columns`
-- Creating `measures`
-- Managing queries
+- Creating and maintaining query/processing time `calculated tables`
+- Creating and maintaining query/processing time `calculated columns`
+- Creating and maintaining `measures`
 
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
@@ -299,3 +349,28 @@ Row level security (also known in other systems as RBAC) is also described using
 The role can be impersonated in tools like Power BI Desktop / Service or DAX Studio and can be tested/developed as such.
 
 ---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Time intelligence - intermission
+
+Downloading the Customer Support.pbix model.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Time intelligence
+
+It is very likely that your data contains one or more timestamp/date columns. Power BI offers a feature to help in with these columns, called `Auto date/time`:
+
+![alt text](image-7.png)
+
+Neato - but, it is quickly becoming useless when you need to distribute aggregates on the same time axis.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Time intelligence
+
+A better solution in this case is creating your own Date table, fit to provide more context to all the dates that may be encountered in your data.
+
+This can be achieved by creating a model date table. Let's open the Customer Support.pbix.
