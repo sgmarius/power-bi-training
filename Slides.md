@@ -151,7 +151,7 @@ Dataflows are making data available for the rest of the platform. They reside wi
 
 The output of a dataflow is one or more tables which are guaranteed to respect a format as described within their query.
 
-Each table is expressed as a M query inside the Dataflow, this covering both the data extraction and transformation part.
+Each table is expressed as a `M` query inside the Dataflow, this covering both the data extraction and transformation part.
 
 ---
 
@@ -173,6 +173,12 @@ Each dataflow is managed and developed by an Owner.
 What's upstream of a dataflow:
 - Can be consumed by Semantic Models. 
 - ![width:40px](./PowerBI-Icons/SVG/Premium.svg) ![width:40px](./PowerBI-Icons/SVG/Premium-Per-User.svg) Dataflows can also be based of other dataflows.
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Intermission
+
+- Power Query interface description.
 
 ---
 #### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
@@ -351,9 +357,58 @@ The role can be impersonated in tools like Power BI Desktop / Service or DAX Stu
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
 
-##### **Exercises**: Time intelligence - intermission
+##### **DAX**
+
+The bane of every Power BI developer standing at the `PEAK OF 'MT. STUPID'`
+![width:540px](https://onlinepethealth.com/wp-content/uploads/2022/11/Dunning-Kruger-Graph-2-004.jpg)
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **DAX**
+Like shown already, it is a syntax similar to excel formulae also overlapping some of the terms and how they behave.
+
+The most abstract concept that is hard to understand by young developers is the evaluation context. We will go through the main ones: the filtering and the row context.
+
+Much like the M syntax, we'll showcase more of `DAX` through exercises.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Intermission
 
 Downloading the Customer Support.pbix model.
+Presenting the Power BI Desktop Interface.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Managing physical relationships
+
+- `Managing Relationships` page
+- What are some of the issues that we can identify?
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Managing physical relationships
+
+Power BI allows for two ways of relating data:
+- Physical relationships - Defined from the `Model` view
+- Virtual relationshps - `DAX` logic determined
+
+`DAX` can also ignore active relationships in an evaluation context, or activate inactive ones.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Managing physical relationships
+
+The physical relationship is always going to be faster to process than the virtual one, but it will only associate rows in between tables.
+
+Virtual relationships allow for a lot more complex joining of data.
+
+Let's create a relationship between the `Incident` and `Subject` tables. 
 
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
