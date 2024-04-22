@@ -241,6 +241,27 @@ Consider the structure below (also accessible under `Data types/Type casting`):
 ![alt text](image-6.png)
 
 ---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Creating a new dataflow:
+- Map the following tables:
+ - `CUSTOMER_SUPPORT_MASTER_DATA.INCIDENT_COMPLIMENT`
+ - `CUSTOMER_SUPPORT_MASTER_DATA.WORKER_TYPE`
+ - Contact entity from `https://linksoft-crm.crm4.dynamics.com`
+ - Call the new dataflow `Other tables`
+
+ ---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Clear up data.
+- Make sure that no empty cells are in the data.
+- Remove any unnecessary columns
+
+---
+#### ![width:20px](./PowerBI-Icons/SVG/Dataflow.svg) Dataflows
+##### **Exercises**: Updating an existing dataflow:
+- Add the table to the `Customer Support Bridge` dataflow:
+  - `CUSTOMER_SUPPORT_BRIDGE_STATUS.WORKER_LOG`
+
+ ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
 
 The component you'll probably spend the most time with:
@@ -383,6 +404,32 @@ Presenting the Power BI Desktop Interface.
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
 
+##### **Exercises**: Adding new tables
+
+- Let's make sure we have all the tables from the `Customer Support Bridge` dataflow
+- Additionally, let's add all the tables from the `Other tables` dataflow
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Adding new tables - load types
+
+- Let's map the `Incident` entity from `linksoft-crm.crm4.linksoft.com` in the `DirectQuery` mode.
+- Let's rename it as `Incident DQ`
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Creating calculated columns
+- `Created date` inside `Incident`
+- `Hours to modification` inside `Incident`, based of `Duration to modification`
+- `URL` inside `Incident DQ`
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
 ##### **Exercises**: Managing physical relationships
 
 - `Managing Relationships` page
@@ -413,6 +460,15 @@ Let's create a relationship between the `Incident` and `Subject` tables.
 ---
 ### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
 
+##### **Exercises**: Managing physical relationships
+
+Let's have a look at the relationship between `WORKER` and `RECEIVED_PAYLOAD` tables.
+
+Let's also have a look at the relationship between `Incident` and `Date table`.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
 ##### **Exercises**: Time intelligence
 
 It is very likely that your data contains one or more timestamp/date columns. Power BI offers a feature to help in with these columns, called `Auto date/time`:
@@ -428,4 +484,111 @@ Neato - but, it is quickly becoming useless when you need to distribute aggregat
 
 A better solution in this case is creating your own Date table, fit to provide more context to all the dates that may be encountered in your data.
 
-This can be achieved by creating a model date table. Let's open the Customer Support.pbix.
+This can be achieved by creating a model date table.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Intermission**: Evaluation contexts
+
+- When evaluated, measures in DAX are submitted to a certain context. This can look like a particular year on the X-Axis of a visual, or the row of a table. Our expectation is that whatever the measure will output, it should be in conformity with the value it associates to in the visual
+- This however is just the most obvious context, some more filters can also be emitted by other visuals, while some other can be emitted by the `Filtering pane`
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Intermission**: Evaluation contexts
+
+- This being said, we call the `filtering context` the cummulative of "filters" that a DAX expression is subjected to, in a visual or query.
+- We're going to count relationships also filters to have that definition make sense 🤪
+- The context can be altered in the said expression: it can be ignored, or overwritten all together.
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Intermission**: Evaluation contexts
+
+- When developing measures, you'll notice that you cannot directly offer a column. i.e.:
+
+```
+Measure = 'Table'[Column]
+```
+However a calculated column allows for this sort of notation (effectively copying the values from `'Table'[Column]`). This is because the expression used for the column is going to be evaluated for each row present in the table where the new column is added. This behaviour is known as the `row context`
+
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Intermission**: Evaluation contexts
+
+- Measures need to return a scalar data type, and this sort of notation will yield an error since it returns a column all together (since measures are not evaluated in a row context)
+
+---
+### ![width:40px](./PowerBI-Icons/SVG/Dataset.svg) Semantic models
+
+##### **Exercises**: Creating a new measure
+
+- `Cases DQ` in a similar fashion to `Cases`
+- `% cases by status`
+- `Errors in bridge transfer`
+- `In bridge`
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Report.svg) Reports
+
+The cornerstone of the visual componentry in Power BI it allows for querying data and representing it in a visual manner.
+
+The basis here is the visual, which takes columns and measures as input, mashes them and displays them.
+
+Visuals have a lot of properties with regards to styling, allowing for custom colours, fonts and labels.
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Report.svg) Reports
+
+Visuals are then contained in Pages. Each page has its type, size and its own styling properties.
+
+A filtering pane is present on each page that displays the filters applied at the visual, page or report level.
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Report.svg) Reports
+
+##### **Exercises**: Creating a new page
+
+Lets redo the page called `Interface primmer` to use the data from the `Incidents DQ` table instead of the `Incidents` one.
+
+Let's rename the page as `Active incidents`. Publish the report afterwards.
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Report.svg) Reports
+
+##### **Intermission**: RLS
+
+Give Reader access to your colleague to your workspace.
+Assign your colleague to the security role in the semantic model.
+Notice limitation of access.
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Report.svg) Reports
+
+##### **Exercises**: Creating a new report
+
+Create a new report called `Bridge status` from Power BI desktop, using a live connection to the `Customer support` semantic model
+Create a new page called `Bridge status`
+Create a tooltip page called `Worker log tooltip`
+Create a drillthrough page called `Worker log`
+
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/Dashboard.svg) Dashboards
+
+---
+
+### ![width:40px](./PowerBI-Icons/SVG/App.svg) Apps
+
+---
